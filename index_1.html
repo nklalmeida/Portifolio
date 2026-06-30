@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nikolas Augusto de Almeida — Analista IAM</title>
+<meta name="description" content="Portfólio de Nikolas Augusto de Almeida, Analista de Identidades e Acessos (IAM) e estudante de Engenharia de Software.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0E1318;
+    --bg-soft: #141B22;
+    --surface: #181F27;
+    --surface-2: #1E2730;
+    --line: #2A3540;
+    --line-soft: #212A33;
+    --text: #E9E7DE;
+    --text-dim: #9AA5AD;
+    --text-faint: #5C6770;
+    --amber: #D99A4E;
+    --amber-dim: #8A6736;
+    --teal: #4FB3A6;
+    --teal-dim: #2E5C56;
+    --granted: #6FBF8B;
+    --granted-bg: rgba(111,191,139,0.1);
+    --expired: #6B7680;
+    --expired-bg: rgba(107,118,128,0.08);
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --max: 880px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:
+      radial-gradient(ellipse 1200px 600px at 20% -10%, rgba(217,154,78,0.06), transparent),
+      radial-gradient(ellipse 900px 500px at 90% 10%, rgba(79,179,166,0.05), transparent),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{ background:var(--amber); color:#0E1318; }
+
+  a{ color:inherit; }
+
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 24px; }
+
+  /* ---------- focus ---------- */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--amber);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
+  }
+
+  /* ---------- top nav ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(14,19,24,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:60px;
+  }
+  .nav-id{
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--text-dim);
+    letter-spacing:0.02em;
+  }
+  .nav-id b{ color:var(--amber); font-weight:500; }
+  .nav-links{
+    display:flex; gap:28px;
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+  }
+  .nav-links a{
+    text-decoration:none; color:var(--text-faint);
+    transition:color .2s ease;
+    position:relative;
+  }
+  .nav-links a:hover{ color:var(--text); }
+  @media (max-width:640px){ .nav-links{ gap:16px; } .nav-links span{display:none;} }
+
+  /* ---------- hero ---------- */
+  header.hero{
+    padding:88px 0 64px;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1fr 220px;
+    gap:48px;
+    align-items:start;
+  }
+  @media (max-width:760px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .badge-card{ order:-1; width:160px; }
+  }
+  .badge-card{
+    border:1px solid var(--line);
+    background:var(--surface);
+    border-radius:12px;
+    padding:14px;
+    position:relative;
+  }
+  .badge-card::before{
+    content:'';
+    position:absolute;
+    top:-1px; left:18px; right:18px; height:3px;
+    background:linear-gradient(90deg, var(--amber), var(--teal));
+    border-radius:0 0 3px 3px;
+  }
+  .badge-photo{
+    width:100%;
+    aspect-ratio:1/1;
+    border-radius:8px;
+    overflow:hidden;
+    border:1px solid var(--line-soft);
+    background:var(--bg-soft);
+  }
+  .badge-photo img{
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center 18%;
+    filter:saturate(0.92) contrast(1.04);
+    display:block;
+  }
+  .badge-id{
+    font-family:var(--font-mono);
+    font-size:10px;
+    color:var(--text-faint);
+    letter-spacing:0.06em;
+    margin-top:10px;
+    display:flex; justify-content:space-between;
+  }
+  .badge-id b{ color:var(--granted); }
+  .badge-name{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--text);
+    margin-top:8px;
+    border-top:1px solid var(--line-soft);
+    padding-top:8px;
+  }
+  .badge-name span{ display:block; color:var(--text-faint); font-size:10px; margin-top:2px; }
+  .status-line{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--granted);
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--granted-bg);
+    border:1px solid rgba(111,191,139,0.25);
+    padding:5px 12px 5px 10px;
+    border-radius:20px;
+    margin-bottom:28px;
+    letter-spacing:0.03em;
+  }
+  .status-dot{
+    width:6px; height:6px; border-radius:50%;
+    background:var(--granted);
+    box-shadow:0 0 0 0 rgba(111,191,139,0.6);
+    animation:pulse 2.2s infinite;
+  }
+  @keyframes pulse{
+    0%{ box-shadow:0 0 0 0 rgba(111,191,139,0.5); }
+    70%{ box-shadow:0 0 0 7px rgba(111,191,139,0); }
+    100%{ box-shadow:0 0 0 0 rgba(111,191,139,0); }
+  }
+
+  h1{
+    font-family:var(--font-mono);
+    font-weight:700;
+    font-size:clamp(34px, 6vw, 56px);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    color:var(--text);
+  }
+  h1 .accent{ color:var(--amber); }
+
+  .role{
+    margin-top:18px;
+    font-size:clamp(16px,2.4vw,19px);
+    color:var(--text-dim);
+    max-width:560px;
+  }
+  .role b{ color:var(--text); font-weight:600; }
+
+  .meta-row{
+    margin-top:28px;
+    display:flex; flex-wrap:wrap; gap:10px;
+  }
+  .meta-chip{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--text-dim);
+    border:1px solid var(--line);
+    background:var(--surface);
+    padding:7px 12px;
+    border-radius:6px;
+    display:inline-flex; align-items:center; gap:7px;
+  }
+
+  .hero-actions{
+    margin-top:36px;
+    display:flex; gap:14px; flex-wrap:wrap;
+  }
+  .btn{
+    font-family:var(--font-mono);
+    font-size:13px;
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:6px;
+    letter-spacing:0.02em;
+    transition:transform .15s ease, background .2s ease, border-color .2s ease;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary{
+    background:var(--amber);
+    color:#171008;
+    font-weight:600;
+    border:1px solid var(--amber);
+  }
+  .btn-primary:hover{ transform:translateY(-1px); background:#E5A85C; }
+  .btn-ghost{
+    background:transparent;
+    color:var(--text);
+    border:1px solid var(--line);
+  }
+  .btn-ghost:hover{ border-color:var(--teal); color:var(--teal); }
+
+  /* ---------- section shell ---------- */
+  section{ padding:72px 0; border-bottom:1px solid var(--line-soft); }
+  section:last-of-type{ border-bottom:none; }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--teal);
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    margin-bottom:10px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::after{
+    content:'';
+    height:1px; flex:1;
+    background:var(--line);
+  }
+
+  h2{
+    font-family:var(--font-mono);
+    font-size:clamp(22px,3.4vw,28px);
+    font-weight:700;
+    margin-bottom:24px;
+    color:var(--text);
+  }
+
+  /* ---------- sobre ---------- */
+  .about-text{
+    font-size:16.5px;
+    color:var(--text-dim);
+    max-width:680px;
+  }
+  .about-text p + p{ margin-top:14px; }
+  .about-text b{ color:var(--text); font-weight:600; }
+
+  /* ---------- skills ---------- */
+  .skill-groups{ display:grid; gap:28px; }
+  .skill-group-label{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--text-faint);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-bottom:12px;
+  }
+  .tag-row{ display:flex; flex-wrap:wrap; gap:9px; }
+  .tag{
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--text);
+    background:var(--surface);
+    border:1px solid var(--line);
+    padding:7px 13px;
+    border-radius:5px;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .tag:hover{ border-color:var(--amber); color:var(--amber); }
+  .tag.core{ border-color:var(--teal-dim); color:var(--teal); background:rgba(79,179,166,0.06); }
+
+  /* ---------- access log (experience) ---------- */
+  .log{
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+    background:var(--surface);
+  }
+  .log-head{
+    display:grid;
+    grid-template-columns: 110px 1fr 110px;
+    gap:12px;
+    padding:12px 18px;
+    font-family:var(--font-mono);
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--text-faint);
+    border-bottom:1px solid var(--line);
+    background:var(--bg-soft);
+  }
+  @media (max-width:640px){ .log-head{ display:none; } }
+
+  .entry{
+    border-bottom:1px solid var(--line-soft);
+    padding:20px 18px;
+    transition:background .2s ease;
+  }
+  .entry:last-child{ border-bottom:none; }
+  .entry:hover{ background:var(--surface-2); }
+
+  .entry-row{
+    display:grid;
+    grid-template-columns: 110px 1fr 110px;
+    gap:12px;
+    align-items:start;
+  }
+  @media (max-width:640px){
+    .entry-row{ grid-template-columns:1fr; gap:10px; }
+  }
+
+  .entry-status{
+    font-family:var(--font-mono);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.06em;
+    padding:4px 9px;
+    border-radius:4px;
+    width:fit-content;
+    height:fit-content;
+  }
+  .entry-status.granted{ color:var(--granted); background:var(--granted-bg); border:1px solid rgba(111,191,139,0.3); }
+  .entry-status.expired{ color:var(--expired); background:var(--expired-bg); border:1px solid rgba(107,118,128,0.25); }
+
+  .entry-main .role-title{
+    font-size:16.5px; font-weight:600; color:var(--text);
+  }
+  .entry-main .org{
+    font-family:var(--font-mono);
+    font-size:13px; color:var(--amber);
+    margin-top:2px;
+  }
+  .entry-main .loc{
+    font-size:12.5px; color:var(--text-faint);
+    margin-top:2px;
+  }
+  .entry-main ul{
+    margin-top:10px;
+    padding-left:18px;
+    color:var(--text-dim);
+    font-size:14px;
+  }
+  .entry-main ul li + li{ margin-top:5px; }
+
+  .entry-dur{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--text-faint);
+    text-align:right;
+  }
+  @media (max-width:640px){ .entry-dur{ text-align:left; } }
+
+  /* ---------- education ---------- */
+  .edu-grid{ display:grid; gap:16px; }
+  .edu-card{
+    border:1px solid var(--line);
+    background:var(--surface);
+    border-radius:10px;
+    padding:20px 22px;
+    display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  }
+  .edu-card .org{ font-weight:600; font-size:16px; color:var(--text); }
+  .edu-card .deg{ color:var(--text-dim); font-size:14px; margin-top:4px; }
+  .edu-card .when{
+    font-family:var(--font-mono); font-size:12px; color:var(--text-faint);
+    white-space:nowrap;
+  }
+  .edu-card .when.active{ color:var(--granted); }
+
+  /* ---------- lang/cert ---------- */
+  .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+  @media (max-width:640px){ .two-col{ grid-template-columns:1fr; } }
+  .mini-list{ list-style:none; }
+  .mini-list li{
+    display:flex; justify-content:space-between;
+    padding:11px 0; border-bottom:1px solid var(--line-soft);
+    font-size:14.5px;
+  }
+  .mini-list li:last-child{ border-bottom:none; }
+  .mini-list .val{ font-family:var(--font-mono); font-size:12.5px; color:var(--teal); }
+
+  /* ---------- contact ---------- */
+  .contact-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:14px;
+  }
+  @media (max-width:640px){ .contact-grid{ grid-template-columns:1fr; } }
+  .contact-card{
+    border:1px solid var(--line);
+    background:var(--surface);
+    border-radius:10px;
+    padding:20px;
+    text-decoration:none;
+    transition:border-color .2s ease, transform .15s ease;
+    display:block;
+  }
+  .contact-card:hover{ border-color:var(--amber); transform:translateY(-2px); }
+  .contact-card .label{
+    font-family:var(--font-mono); font-size:11px; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--text-faint); margin-bottom:8px;
+  }
+  .contact-card .value{ font-size:14.5px; color:var(--text); word-break:break-word; }
+
+  footer{
+    padding:32px 0 48px;
+    text-align:center;
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    color:var(--text-faint);
+  }
+
+  /* ---------- reveal ---------- */
+  .reveal{
+    opacity:0; transform:translateY(14px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-id"><b>NA</b>.almeida</div>
+    <div class="nav-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#formacao">Formação</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="status-line"><span class="status-dot"></span>ACESSO ATIVO — DISPONÍVEL PARA NOVAS OPORTUNIDADES</div>
+        <h1>Nikolas Augusto<br>de <span class="accent">Almeida</span></h1>
+        <p class="role">
+          <b>Analista de Identidades e Acessos (IAM)</b>, com base sólida em governança de identidade e
+          formação em Engenharia de Software. Curitiba, Paraná.
+        </p>
+        <div class="meta-row">
+          <span class="meta-chip">📍 Curitiba, PR — Brasil</span>
+          <span class="meta-chip">2+ anos em IAM</span>
+          <span class="meta-chip">Inglês — Professional Working</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contato">Entrar em contato →</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/nikolasalmeida" target="_blank" rel="noopener">Ver LinkedIn</a>
+        </div>
+      </div>
+      <div class="badge-card">
+        <div class="badge-photo">
+          <img src="nikolas.jpg" alt="Foto de Nikolas Augusto de Almeida">
+        </div>
+        <div class="badge-id">
+          <span>ID · IAM-002</span>
+          <b>● VALID</b>
+        </div>
+        <div class="badge-name">
+          NIKOLAS A. ALMEIDA
+          <span>ANALISTA IAM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="eyebrow">// sobre</div>
+    <h2>Resumo</h2>
+    <div class="about-text reveal">
+      <p>
+        Formado em <b>Engenharia de Software</b>, comunicativo, organizado e proativo, com interesse
+        consolidado em Tecnologia da Informação. Ao longo da formação, desenvolvi conhecimentos sólidos
+        em diversas linguagens de programação — incluindo <b>C, C++, Python, HTML5, PHP, Flutter e SQL</b>.
+      </p>
+      <p>
+        Atualmente atuo na <b>Netbr</b> como Analista de Identidades, acumulando mais de
+        <b>dois anos de experiência</b> na implementação de soluções de governança de identidade e
+        gerenciamento de acessos. Nessa função, contribuo ativamente para a segurança e eficiência dos
+        sistemas de informação, apoiando a conformidade e a proteção dos dados corporativos.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="competencias">
+  <div class="wrap">
+    <div class="eyebrow">// competências</div>
+    <h2>Habilidades</h2>
+    <div class="skill-groups reveal">
+      <div>
+        <div class="skill-group-label">Principais competências</div>
+        <div class="tag-row">
+          <span class="tag core">Gestão de identidades e acessos</span>
+          <span class="tag core">Solução de problemas técnicos</span>
+          <span class="tag core">Criação de scripts</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Linguagens & ferramentas</div>
+        <div class="tag-row">
+          <span class="tag">Java</span>
+          <span class="tag">Python</span>
+          <span class="tag">C</span>
+          <span class="tag">C++</span>
+          <span class="tag">HTML5</span>
+          <span class="tag">PHP</span>
+          <span class="tag">Flutter</span>
+          <span class="tag">SQL</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Bancos de dados & plataformas</div>
+        <div class="tag-row">
+          <span class="tag">DB2</span>
+          <span class="tag">Oracle</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">IBM Security Verify Governance</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experiencia">
+  <div class="wrap">
+    <div class="eyebrow">// experiência</div>
+    <h2>Histórico de acesso</h2>
+
+    <div class="log reveal">
+      <div class="log-head">
+        <span>Status</span><span>Cargo / Organização</span><span>Duração</span>
+      </div>
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-status granted">GRANTED</span>
+          <div class="entry-main">
+            <div class="role-title">Analista de identidades Pleno II</div>
+            <div class="org">Netbr</div>
+            <div class="loc">Curitiba, Paraná, Brasil</div>
+          </div>
+          <div class="entry-dur">jan 2025 — atual<br>(1a 6m)</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-status expired">EXPIRED</span>
+          <div class="entry-main">
+            <div class="role-title">Senior Associate, Technical and Security Systems</div>
+            <div class="org">Kyndryl</div>
+            <div class="loc">Curitiba, Paraná, Brasil</div>
+          </div>
+          <div class="entry-dur">out 2024 — dez 2024<br>(3m)</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-status expired">EXPIRED</span>
+          <div class="entry-main">
+            <div class="role-title">Analista IAM</div>
+            <div class="org">NAI</div>
+            <div class="loc">Curitiba, Paraná, Brasil</div>
+          </div>
+          <div class="entry-dur">jul 2024 — out 2024<br>(4m)</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-status expired">EXPIRED</span>
+          <div class="entry-main">
+            <div class="role-title">Analista de segurança da informação</div>
+            <div class="org">ASYG Informática Ltda.</div>
+            <div class="loc">Pinhais, Paraná, Brasil</div>
+            <ul>
+              <li>Desenvolvimento em Java integrado a bancos de dados DB2, Oracle e PostgreSQL.</li>
+              <li>Implementação de soluções de IAM utilizando IBM® Security Verify Governance.</li>
+              <li>Automação de processos de ciclo de vida de identidades.</li>
+            </ul>
+          </div>
+          <div class="entry-dur">fev 2023 — jul 2024<br>(1a 6m)</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-status expired">EXPIRED</span>
+          <div class="entry-main">
+            <div class="role-title">Manager</div>
+            <div class="org">B4 eSports</div>
+            <div class="loc">Curitiba, Paraná, Brasil</div>
+          </div>
+          <div class="entry-dur">fev 2022 — dez 2022<br>(11m)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="formacao">
+  <div class="wrap">
+    <div class="eyebrow">// formação acadêmica</div>
+    <h2>Formação</h2>
+    <div class="edu-grid reveal">
+      <div class="edu-card">
+        <div>
+          <div class="org">UniSenai PR</div>
+          <div class="deg">Bacharelado em Engenharia de Software</div>
+        </div>
+        <div class="when">2021 — 2024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="idiomas">
+  <div class="wrap">
+    <div class="two-col reveal">
+      <div>
+        <div class="eyebrow">// idiomas</div>
+        <ul class="mini-list">
+          <li>Português <span class="val">NATIVO</span></li>
+          <li>Inglês <span class="val">PROFESSIONAL WORKING</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="eyebrow">// certificações</div>
+        <ul class="mini-list">
+          <li>Scrum <span class="val">CERT</span></li>
+          <li>I Simpósio <span class="val">CERT</span></li>
+          <li>HTML5 <span class="val">CERT</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="wrap">
+    <div class="eyebrow">// contato</div>
+    <h2>Vamos conversar</h2>
+    <div class="contact-grid reveal">
+      <a class="contact-card" href="tel:+5541996807283">
+        <div class="label">Telefone</div>
+        <div class="value">(41) 9 9680-7283</div>
+      </a>
+      <a class="contact-card" href="mailto:nklalmeida.contato@gmail.com">
+        <div class="label">E-mail</div>
+        <div class="value">nklalmeida.contato@gmail.com</div>
+      </a>
+      <a class="contact-card" href="https://www.linkedin.com/in/nikolasalmeida" target="_blank" rel="noopener">
+        <div class="label">LinkedIn</div>
+        <div class="value">/in/nikolasalmeida</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    NIKOLAS AUGUSTO DE ALMEIDA — CURITIBA, PR · ÚLTIMA SINCRONIZAÇÃO: <span id="syncdate"></span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('syncdate').textContent = new Date().toLocaleDateString('pt-BR', { year:'numeric', month:'long' });
+
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold:0.12 });
+  reveals.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
